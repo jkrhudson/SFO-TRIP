@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#ffffff" />
+  <title>舊金山行程</title>
+  <meta name="description" content="2026/10/04 – 10/15 灣區出差與舊金山、優聖美地、矽谷休假行程總覽（含無牛肉美食推薦、航班憑證、兩段租車、Airbnb/飯店、Outlet 攻略與防盜須知）" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #f3f4f6;
+      color: #1f2937;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang TC", "Noto Sans TC", "Segoe UI", Roboto, sans-serif;
+      touch-action: manipulation;
+      -webkit-font-smoothing: antialiased;
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Standalone fallback layout styles so page works 100% offline (e.g. on airplane or in Yosemite) */
+    .app-shell {
+      max-width: 28rem;
+      margin: 0 auto;
+      background-color: #f9fafb;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+    .app-header {
+      background: #ffffff;
+      padding: 1.25rem 1.25rem 0.85rem;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+      position: sticky;
+      top: 0;
+      z-index: 30;
+    }
+    .day-tabs {
+      display: flex;
+      background: #ffffff;
+      border-bottom: 1px solid #f1f5f9;
+      overflow-x: auto;
+      position: sticky;
+      top: 76px;
+      z-index: 25;
+    }
+    .day-tab-btn {
+      flex: 0 0 auto;
+      min-width: 78px;
+      padding: 0.65rem 0.6rem;
+      text-align: center;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.18s ease;
+      color: #9ca3af;
+    }
+    .day-tab-btn.active {
+      color: #2563eb;
+      font-weight: 700;
+    }
+    .day-tab-indicator {
+      position: absolute;
+      bottom: 0;
+      left: 12%;
+      width: 76%;
+      height: 3px;
+      background: #2563eb;
+      border-radius: 999px;
+    }
+    .content-scroll {
+      flex: 1;
+      padding: 1rem 1rem 6.5rem;
+    }
+    .timeline-container {
+      position: relative;
+      padding-left: 1rem;
+    }
+    .timeline-line {
+      position: absolute;
+      left: 23px;
+      top: 10px;
+      bottom: 16px;
+      width: 2px;
+      background-color: #e5e7eb;
+    }
+    .timeline-item {
+      position: relative;
+      display: flex;
+      margin-bottom: 1.25rem;
+    }
+    .timeline-dot {
+      position: absolute;
+      left: 0;
+      margin-top: 6px;
+      width: 16px;
+      height: 16px;
+      border-radius: 9999px;
+      background: #ffffff;
+      border: 4px solid #3b82f6;
+      z-index: 10;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    }
+    .timeline-dot.food { border-color: #f97316; }
+    .timeline-dot.coffee { border-color: #92400e; }
+    .timeline-dot.hotel { border-color: #6366f1; }
+    .timeline-dot.flight { border-color: #0284c7; }
+    .timeline-dot.car { border-color: #0d9488; }
+    .timeline-dot.shop { border-color: #ec4899; }
+    .timeline-dot.warn { border-color: #dc2626; }
+
+    .timeline-card {
+      margin-left: 2rem;
+      background: #ffffff;
+      padding: 1rem;
+      border-radius: 0.85rem;
+      border: 1px solid #f1f5f9;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      width: 100%;
+      transition: transform 0.15s ease;
+    }
+    .timeline-card:active {
+      transform: scale(0.985);
+    }
+    .bottom-nav {
+      position: fixed;
+      bottom: 1.15rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(17, 24, 39, 0.96);
+      backdrop-filter: blur(10px);
+      color: #ffffff;
+      padding: 0.55rem 1.15rem;
+      border-radius: 9999px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.22);
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      z-index: 40;
+      max-width: 94vw;
+    }
+    .bottom-nav-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: transparent;
+      border: none;
+      color: #ffffff;
+      opacity: 0.55;
+      cursor: pointer;
+      padding: 0.15rem 0.4rem;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+      white-space: nowrap;
+    }
+    .bottom-nav-btn.active {
+      opacity: 1;
+      color: #60a5fa;
+    }
+    .nav-divider {
+      width: 1px;
+      height: 22px;
+      background: #374151;
+    }
+    .toast-msg {
+      position: fixed;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #111827;
+      color: #ffffff;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+      z-index: 60;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+    .toast-msg.show {
+      opacity: 1;
+    }
+
+    /* Theme banners matching tw-travel-plan */
+    .theme-slate { background-color: #e2e8f0; color: #1e293b; }
+    .theme-orange { background-color: #ffedd5; color: #9a3412; }
+    .theme-blue { background-color: #dbeafe; color: #1e40af; }
+    .theme-amber { background-color: #fef3c7; color: #92400e; }
+    .theme-emerald { background-color: #d1fae5; color: #065f46; }
+    .theme-pink { background-color: #fce7f3; color: #9d174d; }
+    .theme-indigo { background-color: #e0e7ff; color: #3730a3; }
+    .theme-purple { background-color: #f3e8ff; color: #6b21a8; }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 9999px;
+    }
+    .chip-btn {
+      display: inline-flex;
+      align-items: center;
+      font-size: 12px;
+      padding: 4px 9px;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.15s ease;
+    }
+  </style>
+</head>
+<body>
+  <div id="toast" class="toast-msg">已複製到剪貼簿</div>
+
+  <div class="app-shell">
+    <!-- Top Header -->
+    <header class="app-header">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+        <h1 style="font-size:1.3rem;font-weight:800;margin:0;color:#1f2937;">
+          舊金山行程
+        </h1>
+        <div style="display:flex;gap:6px;align-items:center;">
+          <span style="background:#fef3c7;color:#92400e;font-size:11px;padding:3px 9px;border-radius:999px;font-weight:600;">
+            🚫🥩 無牛肉精選
+          </span>
+          <span style="background:#ccfbf1;color:#115e59;font-size:11px;padding:3px 9px;border-radius:999px;font-weight:600;">
+            10/4–10/15
+          </span>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <p style="color:#6b7280;font-size:0.78rem;margin:0;">
+          10/5–10/8 出差工作日 · 10/9–10/14 舊金山＆優聖美地休假
+        </p>
+      </div>
+    </header>
+
+    <!-- Day Selector Bar (Visible on Schedule Tab) -->
+    <nav id="day-tabs-bar" class="day-tabs no-scrollbar" aria-label="Day Selector"></nav>
+
+    <!-- Main Scrollable Content -->
+    <main id="main-content" class="content-scroll"></main>
+
+    <!-- Bottom Floating Navigation Bar -->
+    <div class="bottom-nav" role="navigation" aria-label="Primary Navigation">
+      <button id="nav-schedule" class="bottom-nav-btn active" onclick="switchMainTab('schedule')">
+        <span id="nav-icon-schedule"></span>
+        <span style="font-size:10px;margin-top:3px;font-weight:600;">行程表</span>
+      </button>
+      <div class="nav-divider"></div>
+      <button id="nav-booking" class="bottom-nav-btn" onclick="switchMainTab('booking')">
+        <span id="nav-icon-booking"></span>
+        <span style="font-size:10px;margin-top:3px;font-weight:600;">機票/租車/住宿</span>
+      </button>
+      <div class="nav-divider"></div>
+      <button id="nav-outlet" class="bottom-nav-btn" onclick="switchMainTab('outlet')">
+        <span id="nav-icon-outlet"></span>
+        <span style="font-size:10px;margin-top:3px;font-weight:600;">Outlet攻略</span>
+      </button>
+      <div class="nav-divider"></div>
+      <button id="nav-tips" class="bottom-nav-btn" onclick="switchMainTab('tips')">
+        <span id="nav-icon-tips"></span>
+        <span style="font-size:10px;margin-top:3px;font-weight:600;">防盜/須知</span>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const AIRBNB_URL = 'https://www.airbnb.com.tw/rooms/13130135?check_in=2026-10-04&check_out=2026-10-08&adults=2&children=0&infants=0&source_impression_id=p3_1789726178_P3sWzKCk_FRPVvco';
+
+    // SVG Icons matching lucide-react style from tw-travel-plan
+    const ICONS = {
+      MapPin: '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle>',
+      Clock: '<circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>',
+      Car: '<path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><circle cx="17" cy="17" r="2"></circle>',
+      Coffee: '<path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line>',
+      ShoppingBag: '<path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path>',
+      Plane: '<path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"></path>',
+      Utensils: '<path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"></path><path d="M7 2v20"></path><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"></path>',
+      Camera: '<path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path><circle cx="12" cy="13" r="3"></circle>',
+      Moon: '<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>',
+      Briefcase: '<rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>',
+      Info: '<circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line>',
+      Shield: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line>',
+      ExternalLink: '<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>',
+      Calendar: '<rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>',
+      Ticket: '<path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"></path><path d="M13 5v2"></path><path d="M13 17v2"></path><path d="M13 11v2"></path>'
+    };
+
+    function renderIcon(name, size = 18, extraStyle = '') {
+      const svgInner = ICONS[name] || ICONS.MapPin;
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;${extraStyle}">${svgInner}</svg>`;
+    }
+
+    function openMap(address) {
+      if (!address) return;
+      const query = encodeURIComponent(address);
+      window.open(`https://www.google.com/maps/search/?api=1&query=${query}`, '_blank');
+    }
+
+    function copyText(text, label) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text);
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+      const toast = document.getElementById('toast');
+      toast.textContent = `✅ 已複製：${label || text}`;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2000);
+    }
+
+    // Complete Schedule Data (10/4 Flight & Car Pick-up + 10/5-10/8 Work at Mountain View Airbnb + 10/8-10/14 Vacation Itinerary)
+    const SCHEDULE = [
+      {
+        id: 'work',
+        dateLabel: '10/4–8',
+        dayLabel: '日–四 (出差)',
+        title: '啟程飛往舊金山 ➔ SFO 取車 ➔ 山景城出差',
+        subTitle: 'CI 4 Arrival, SFO Car Rental #1 & Mountain View Airbnb',
+        themeClass: 'theme-slate',
+        hotel: {
+          name: 'Airbnb: Porta Azul House (Mountain View)',
+          note: '連住 4 晚 (10/4 入住 – 10/8 退房) · ★4.98 整套平房 (2房3床2衛)',
+          address: 'Downtown Mountain View, CA',
+          externalUrl: AIRBNB_URL,
+          externalLabel: '🏠 開啟 Airbnb 房源頁面'
+        },
+        activities: [
+          {
+            time: '10/04 23:30',
+            icon: 'Plane',
+            dotType: 'flight',
+            tag: '去程航班 CI 4',
+            tagColor: 'background:#e0f2fe;color:#0369a1;',
+            title: '桃園機場第二航廈 (TPE T2) 起飛',
+            sub: '中華航空 China Airlines CI 4 · 商務艙 Seat 14G',
+            desc: '機型 Airbus A350-900（飛行時間 11 小時 25 分）。託運行李額度：2 件 × 32kg (70lbs)；手提行李：2 件 × 7kg (15lbs)。',
+            transport: '✈️ 直飛舊金山 SFO',
+            address: '桃園國際機場第二航廈'
+          },
+          {
+            time: '10/04 19:55',
+            icon: 'MapPin',
+            dotType: 'flight',
+            tag: '抵達美西',
+            tagColor: 'background:#e0f2fe;color:#0369a1;',
+            title: '抵達舊金山國際機場 (SFO)',
+            sub: 'International Terminal · 同日傍晚抵達 (時差 -15h)',
+            desc: '入境審查、提領行李後，搭乘機場 AirTrain (Blue Line) 前往 SFO Rental Car Center 辦理取車。',
+            transport: '🚝 機場 AirTrain 藍線',
+            address: 'San Francisco International Airport (SFO)'
+          },
+          {
+            time: '10/04 20:30',
+            icon: 'Car',
+            dotType: 'car',
+            tag: '租車 #1 取車',
+            tagColor: 'background:#ccfbf1;color:#115e59;',
+            title: 'SFO 機場租車中心取車 (Pick-up)',
+            sub: '780 McDonnell Rd, San Francisco, CA 94128',
+            desc: '於 San Francisco Intl Airport 租車中心取車（電話：650-877-6780）。取車後沿 US-101 S 南下開往 Mountain View Airbnb 入住（車程約 30–35 分鐘）。\n（此車將於 10/8 週四 20:30 原地歸還於 SFO）',
+            transport: '🚗 自駕南下 Mountain View',
+            address: '780 McDonnell Rd, San Francisco, CA 94128 US',
+            phone: '650-877-6780'
+          },
+          {
+            time: '10/04 21:30',
+            icon: 'Moon',
+            dotType: 'hotel',
+            tag: '出差 Airbnb 入住',
+            tagColor: 'background:#e0e7ff;color:#3730a3;',
+            title: '入住 Mountain View Airbnb — Porta Azul House',
+            sub: '靠近山景城市中心用餐目的地 · 2 間臥室 / 3 張床 / 2 間衛浴',
+            desc: '整套舒適平房，配備不鏽鋼美食廚房、挑高客廳與大理石淋浴間，鄰近 Mountain View Downtown (Castro St) 餐廳群。連住 4 晚 (10/4 – 10/8)。',
+            transport: '🏠 Check-in 休息',
+            address: 'Castro St, Mountain View, CA',
+            externalUrl: AIRBNB_URL,
+            externalLabel: '開啟 Airbnb 頁面'
+          },
+          {
+            time: '10/05 – 10/08',
+            icon: 'Briefcase',
+            dotType: 'default',
+            tag: '工作日 Work Days',
+            tagColor: 'background:#f1f5f9;color:#334155;',
+            title: '灣區出差工作日 (無排定觀光行程)',
+            sub: 'Bay Area Business Trip (Mon 10/5 – Thu 10/8)',
+            desc: '10/5 (一) 至 10/8 (四) 白天為出差工作日。10/8 (四) 早上辦理 Airbnb 退房，下班後北上 SFO 機場於 20:30 還車，正式展開舊金山休假行程！',
+            transport: '💼 Work & 自駕通勤',
+            address: 'Googleplex, Mountain View, CA'
+          }
+        ]
+      },
+      {
+        id: 'day1',
+        dateLabel: 'Day 1',
+        dayLabel: '10/8 (四)',
+        title: 'SFO 機場還車/會合 ➔ 漁人碼頭入住',
+        subTitle: 'SFO Car Return (8:30 PM) & Hotel Caza Check-in',
+        themeClass: 'theme-orange',
+        hotel: {
+          name: 'Hotel Caza Fisherman\'s Wharf',
+          note: '連住 2 晚 (10/8 – 10/10)',
+          address: '1300 Columbus Ave, San Francisco, CA 94133'
+        },
+        activities: [
+          {
+            time: '20:00 – 20:30',
+            icon: 'Car',
+            dotType: 'car',
+            tag: '租車 #1 還車 & 抵達',
+            tagColor: 'background:#ccfbf1;color:#115e59;',
+            title: 'SFO 機場租車中心還車 (Return) / 機場會合',
+            sub: '780 McDonnell Rd, San Francisco, CA 94128 · 20:30 還車',
+            desc: '• 20:30 於 SFO Rental Car Center 歸還出差期間租車（電話：650-877-6780）。\n• 班機約 20:00 抵達舊金山國際機場，入境提領行李後，一併前往漁人碼頭 Hotel Caza 入住（前四天住舊金山市區皆搭車/跟團，完全避開市區停車費與破窗風險！）。',
+            transport: '🚗 還車後搭 Uber / 專車赴市區',
+            address: '780 McDonnell Rd, San Francisco, CA 94128 US',
+            phone: '650-877-6780'
+          },
+          {
+            time: '21:15',
+            icon: 'Moon',
+            dotType: 'hotel',
+            tag: '飯店入住',
+            tagColor: 'background:#e0e7ff;color:#3730a3;',
+            title: '前往漁人碼頭辦理入住 Hotel Caza',
+            sub: 'Hotel Caza Fisherman\'s Wharf (連住 2 晚)',
+            desc: '抵達舊金山漁人碼頭核心區的 Hotel Caza (1300 Columbus Ave) 辦理入住並放置行李。',
+            transport: '🚕 SFO ➔ 漁人碼頭 (約 30–35 分)',
+            address: 'Hotel Caza Fisherman\'s Wharf, 1300 Columbus Ave, San Francisco, CA'
+          },
+          {
+            time: '21:30',
+            icon: 'Utensils',
+            dotType: 'food',
+            tag: '無牛肉宵夜指南',
+            tagColor: 'background:#ffedd5;color:#9a3412;',
+            title: 'Columbus Ave 海鮮熟食 / 瑪格麗特披薩 & Walgreens',
+            sub: '碼頭外帶熱海鮮濃湯 或 美式披薩 · Walgreens 營業至 ~22:00',
+            desc: '若抵達後肚子餓，從飯店步行 5 分鐘至 Columbus Ave 沿線有披薩店或美式海鮮熟食，點餐時認明純海鮮（Seafood / Shrimp / Calamari）或起司瑪格麗特（Margherita Pizza）。亦可至附近 Walgreens（~10:00 PM）採買飯店輕食與飲水。',
+            transport: '🚶 飯店步行 5 分鐘',
+            address: '1300 Columbus Ave, San Francisco, CA'
+          }
+        ]
+      },
+      {
+        id: 'day2',
+        dateLabel: 'Day 2',
+        dayLabel: '10/9 (五)',
+        title: '舊金山市區經典地標 ＆ 惡魔島一日遊',
+        subTitle: 'Golden Gate Bridge, Alcatraz & Dungeness Crab',
+        themeClass: 'theme-blue',
+        hotel: {
+          name: 'Hotel Caza Fisherman\'s Wharf',
+          note: '續住第 2 晚 (免搬行李)',
+          address: '1300 Columbus Ave, San Francisco, CA 94133'
+        },
+        activities: [
+          {
+            time: '08:50',
+            icon: 'Camera',
+            dotType: 'default',
+            tag: 'Easy Travel 一日遊',
+            tagColor: 'background:#dbeafe;color:#1e40af;',
+            title: '舊金山市區經典地標巡禮集合',
+            sub: '2805 Leavenworth St (Fisherman\'s Wharf Area)',
+            desc: '從 Hotel Caza 步行約 5–8 分鐘即可抵達集合點。搭乘專車前往舊金山代表地標「金門大橋 (Golden Gate Bridge)」與「藝術宮 (Palace of Fine Arts)」拍照巡禮。',
+            transport: '🚶 步行 5–8 分鐘至集合點',
+            address: '2805 Leavenworth Street, San Francisco, CA'
+          },
+          {
+            time: '12:00',
+            icon: 'Utensils',
+            dotType: 'food',
+            tag: '無牛肉午餐',
+            tagColor: 'background:#ffedd5;color:#9a3412;',
+            title: 'Boudin Bakery Cafe 酸麵包蛤蜊濃湯盅',
+            sub: 'Clam Chowder in a Sourdough Bowl',
+            desc: '漁人碼頭百年傳奇酸麵包名店！必點「酸麵包蛤蜊巧達濃湯」，湯頭濃郁鮮甜，以純海鮮與蔬菜熬煮，完全不含牛骨高湯。',
+            transport: '🚶 漁人碼頭步行',
+            address: 'Boudin Bakery, 160 Jefferson St, San Francisco, CA'
+          },
+          {
+            time: '13:30',
+            icon: 'Camera',
+            dotType: 'default',
+            tag: '登島探索',
+            tagColor: 'background:#dbeafe;color:#1e40af;',
+            title: '惡魔島 (Alcatraz Island) 登島探索',
+            sub: '阿爾卡特拉斯島 · 免費中文語音導覽',
+            desc: '下午登臨阿爾卡特拉斯島（惡魔島），領取免費中文語音導覽，重回當年戒備森嚴的聯邦監獄，聆聽驚心動魄的越獄事件。下船後於漁人碼頭自由散步。',
+            transport: '⛴️ Pier 33 惡魔島渡輪',
+            address: 'Alcatraz Landing, Pier 33, San Francisco, CA'
+          },
+          {
+            time: '16:30',
+            icon: 'Coffee',
+            dotType: 'coffee',
+            tag: '精品咖啡',
+            tagColor: 'background:#fef3c7;color:#92400e;',
+            title: 'Sightglass Coffee 手沖單品咖啡',
+            sub: '挑高木造工業風空間',
+            desc: '若隨團或下團後行經市區，可造訪舊金山知名獨立烘焙咖啡館 Sightglass Coffee，享受挑高木造工業風空間的手沖單品。',
+            transport: '🚶 市區 / 散步順遊',
+            address: 'Sightglass Coffee, 270 7th St, San Francisco, CA'
+          },
+          {
+            time: '18:00',
+            icon: 'Utensils',
+            dotType: 'food',
+            tag: '無牛肉晚餐 A',
+            tagColor: 'background:#ffedd5;color:#9a3412;',
+            title: 'Fog Harbor Fish House 蒜香烤螃蟹',
+            sub: 'Garlic Roasted Whole Dungeness Crab',
+            desc: '位於 Pier 39 坐擁海景的人氣海鮮餐廳，必點「蒜香蒸烤太平洋珍寶蟹」，蒜香濃郁、蟹肉肥美！',
+            transport: '🚶 Pier 39 步行',
+            address: 'Fog Harbor Fish House, Pier 39, San Francisco, CA'
+          },
+          {
+            time: '19:30',
+            icon: 'Utensils',
+            dotType: 'food',
+            tag: '晚餐/輕食選擇 B',
+            tagColor: 'background:#ffedd5;color:#9a3412;',
+            title: 'Mad Yolks 招牌脆皮炸雞滑蛋堡',
+            sub: 'The Mad Chick + 特調抹茶拿鐵 (Matcha Latte)',
+            desc: '從漁人碼頭沿著 Columbus Ave 散步上去買 Mad Yolks 當晚餐：必點「The Mad Chick / Crispy Fried Chicken Sandwich（招牌脆皮炸雞滑蛋堡）」搭配「特調抹茶拿鐵」。',
+            transport: '🚶 沿 Columbus Ave 散步',
+            address: 'Mad Yolks, Columbus Ave, San Francisco, CA'
+          }
+        ]
+      },
+      {
+        id: 'day3',
+        dateLabel: 'Day 3',
+        dayLabel: '10/10 (六)',
+        title: '農夫市集盛宴 ➔ 藍瓶咖啡 ➔ 海灣大橋海景',
+        subTitle: 'Ferry Building Farmers Market, Blue Bottle & Bay Bridge',
+        themeClass: 'theme-amber',
+        hotel: {
+          name: 'Hotel Riu Plaza Fisherman\'s Wharf',
+          note: '連住 2 晚 (10/10 – 10/12)',
+          address: '2500 Mason St, San Francisco, CA 94133'
+        },
+        activities: [
+          {
+            time: '08:00',
+            icon: 'Moon',
+            dotType: 'hotel',
+            tag: '輕鬆換宿',
+            tagColor: 'background:#e0e7ff;color:#3730a3;',
+            title: '步行換飯店至隔壁 Hotel Riu Plaza',
+            sub: '寄放行李於 Riu Plaza 前台',
+            desc: '早晨從 Hotel Caza 退房後，步行 3 分鐘直接過街將行李寄放在隔壁 Hotel Riu Plaza 前台，完全不費力！',
+            transport: '🚶 過街步行 3 分鐘',
+            address: 'Hotel Riu Plaza Fisherman\'s Wharf, 2500 Mason St, San Francisco, CA'
+          },
+          {
+            time: '08:30',
+            icon: 'Utensils',
+            dotType: 'food',
+            tag: '農夫市集早餐',
+            tagColor: 'background:#ffedd5;color:#9a3412;',
+            title: '渡輪大廈農夫市集 (Ferry Plaza Farmers Market)',
+            sub: 'Roli Roti 慢烤脆皮豬肉三明治 ＆ Primavera 墨西哥捲餅',
+            desc: '建議 08:30 前抵達渡輪大廈戶外市集！\n• Roli Roti（戶外排隊首選）：必點「慢烤脆皮豬肉三明治 (Porchetta Sandwich)」，豬皮酥脆多汁，夾入吸收肉汁精華的迷迭香馬鈴薯。\n• Primavera（手工墨西哥菜）：點「香煎雞肉玉米脆餅 (Chilaquiles with Chicken)」佐新鮮莎莎醬與酪梨。',
+            transport: '🚋 F-Market 復古電車 / Uber',
+            address: 'Ferry Building, 1 Ferry Building, San Francisco, CA'
+          },
+          {
+            time: '10:00',
+            icon: 'Coffee',
+            dotType: 'coffee',
+            tag: '創始名店咖啡',
+            tagColor: 'background:#fef3c7;color:#92400e;',
+            title: 'Blue Bottle Coffee 渡輪大廈店',
+            sub: '招牌菊苣冰咖啡 (New Orleans-style Iced Coffee)',
+            desc: '造訪渡輪大廈內的藍瓶咖啡經典創始門市，必點招牌「菊苣冰咖啡 (New Orleans-style Iced Coffee)」。',
+            transport: '🚶 渡輪大廈內',
+            address: 'Blue Bottle Coffee, 1 Ferry Building, San Francisco, CA'
+          },
+          {
+            time: '12:00',
+            icon: 'Utensils',
+            dotType: 'food',
+            tag: '無牛肉生蠔午餐',
+            tagColor: 'background:#ffedd5;color:#9a3412;',
+            title: 'Hog Island Oyster Co. 生蠔拼盤',
+            sub: 'Sweetwater / Kumamoto 冷水甜蠔 ＆ 蒜香奶油烤生蠔',
+            desc: '現開冷水甜蠔拼盤（Sweetwater / Kumamoto）配紅蔥香檳醋，或點熱烤波旁威士忌蒜香奶油生蠔，鮮甜海味滿分。',
+            transport: '🚶 渡輪大廈海景座位',
+            address: 'Hog Island Oyster Co, 1 Ferry Building, San Francisco, CA'
+          },
+          {
+            time: '14:00',
+            icon: 'Camera',
+            dotType: 'default',
+            tag: '海灣漫步',
+            tagColor: 'background:#dbeafe;color:#1e40af;',
+            title: '漫步內河碼頭 (Pier 14) 遠眺海灣大橋',
+            sub: 'San Francisco-Oakland Bay Bridge 最佳取景點',
+            desc: '沿著 Pier 14 木棧道向南漫步，是欣賞「舊金山-奧克蘭海灣大橋」雙層鋼索雄姿與海灣景致的最佳取景點；午後返回漁人碼頭海邊散步。',
+            transport: '🚶 海濱木棧道散步',
+            address: 'Pier 14, The Embarcadero, San Francisco, CA'
+          },
+          {
+            time: '17:00',
+            icon: 'ShoppingBag',
+            dotType: 'warn',
+            tag: '⚠️ 明日野餐採買',
+            tagColor: 'background:#fee2e2;color:#b91c1c;',
+            title: 'Trader Joe\'s 或 Safeway 採買優聖美地野餐',
+            sub: '冷燻鮭魚/雞肉三明治、香蕉、蘋果、堅果、大瓶水',
+            desc: '重要提醒：優聖美地國家公園內餐飲排隊極長且選擇有限！週六下午務必在漁人碼頭附近的 Trader Joe\'s 或 Safeway 超市買好明日午餐與大瓶水。',
+            transport: '🚶 漁人碼頭周邊超市',
+            address: 'Trader Joe\'s, 401 Bay St, San Francisco, CA'
+          }
+        ]
+      },
+      {
+        id: 'day4',
+        dateLabel: 'Day 4',
+        dayLabel: '10/11 (日)',
+        title: '優聖美地國家公園全日壯遊（跟團一日遊）',
+        subTitle: 'Yosemite National Park & Scoma\'s Cioppino',
+        themeClass: 'theme-emerald',
+        hotel: {
+          name: 'Hotel Riu Plaza Fisherman\'s Wharf',
+          note: '續住第 2 晚 (20:30 返抵漁人碼頭)',
+          address: '2500 Mason St, San Francisco, CA 94133'
+        },
+        activities: [
+          {
+            time: '07:00',
+            icon: 'Car',
+            dotType: 'default',
+            tag: '清晨集合出發',
+            tagColor: 'background:#d1fae5;color:#065f46;',
+            title: '優聖美地國家公園一日遊出發',
+            sub: '單程車程約 4 小時 · 請備妥防風保暖外套',
+            desc: '約清晨 07:00 於飯店集合搭乘專車前往優聖美地國家公園。山區清晨與黃昏溫差大，請穿著「防風防潑水保暖外套＋衛衣/長袖」洋蔥式穿搭。',
+            transport: '🚌 專車前往優聖美地',
+            address: 'Yosemite National Park, CA'
+          },
+          {
+            time: '11:00',
+            icon: 'Camera',
+            dotType: 'default',
+            tag: '壯麗景觀上半場',
+            tagColor: 'background:#d1fae5;color:#065f46;',
+            title: '隧道觀景點 (Tunnel View) ➔ 新娘面紗瀑布',
+            sub: 'Tunnel View & Bridalveil Fall',
+            desc: '進入優聖美地山谷核心，首先於經典明信片角度「隧道觀景點 (Tunnel View)」俯瞰整個花崗岩山谷，接著造訪水霧飄逸的「新娘面紗瀑布 (Bridalveil Fall)」。',
+            transport: '🚌 專車穿梭山谷',
+            address: 'Tunnel View, Wawona Rd, Yosemite Valley, CA'
+          },
+          {
+            time: '12:30',
+            icon: 'Utensils',
+            dotType: 'food',
+            tag: '松林野餐 (避牛肉)',
+            tagColor: 'background:#ffedd5;color:#9a3412;',
+            title: '優聖美地松林下愜意野餐',
+            sub: '享用前日超市採買：雞肉/冷燻鮭魚三明治、堅果、水果',
+            desc: '免去園區大排長龍，在壯麗花崗岩壁與松林下享用前一天於 Trader Joe\'s / Safeway 準備好的美味無牛肉野餐組合。',
+            transport: '🌲 園區野餐區',
+            address: 'Yosemite Valley Visitor Center, CA'
+          },
+          {
+            time: '13:30',
+            icon: 'Camera',
+            dotType: 'default',
+            tag: '壯麗景觀下半場',
+            tagColor: 'background:#d1fae5;color:#065f46;',
+            title: '酋長岩草原 ➔ 優勝美地瀑布 ➔ 幽谷觀景點',
+            sub: 'El Capitan Meadow · Lower Yosemite Fall · Valley View',
+            desc: '仰望世界最大單體花崗岩「酋長岩 (El Capitan)」，漫步「下優勝美地瀑布步道」，最後停留溪水倒映岩壁的「幽谷觀景點 (Valley View)」後啟程返航。',
+            transport: '🚌 傍晚啟程返回舊金山',
+            address: 'Valley View, Northside Dr, Yosemite Valley, CA'
+          },
+          {
+            time: '20:30',
+            icon: 'Utensils',
+            dotType: 'food',
+            tag: '無牛肉經典海鮮晚餐',
+            tagColor: 'background:#ffedd5;color:#9a3412;',
+            title: 'Scoma\'s Restaurant 義式番茄海鮮燉湯',
+            sub: '必點：Lazy Man\'s Cioppino (無牛骨成分)',
+            desc: '晚間約 20:30 返抵漁人碼頭，前往隱藏在碼頭盡頭的傳奇名店 Scoma\'s 享用舊金山特色海鮮燉湯「Lazy Man\'s Cioppino」（純番茄海鮮高湯，滿滿去殼螃蟹、大蝦、干貝、淡菜與蛤蜊，完全無任何牛骨成分）！',
+            transport: '🚶 漁人碼頭 Pier 47',
+            address: 'Scoma\'s Restaurant, 1965 Al Scoma Way, San Francisco, CA'
+          }
+        ]
+      },
+      {
+        id: 'day5',
+        dateLabel: 'Day 5',
+        dayLabel: '10/12 (一)',
+        title: '漁人碼頭取車 ➔ Livermore Outlet 採購日',
+        subTitle: 'Fisherman\'s Wharf Car Pick-up, Outlet & Sunnyvale',
+        themeClass: 'theme-pink',
+        hotel: {
+          name: 'Maple Tree Inn (Sunnyvale)',
+          note: '入住南灣 1 晚 (10/12 – 10/13)',
+          address: '711 E El Camino Real, Sunnyvale, CA 94087'
+        },
+        activities: [
+          {
+            time: '09:00',
+            icon: 'Car',
+            dotType: 'car',
+            tag: '租車 #2 取車 (FMW)',
+            tagColor: 'background:#ccfbf1;color:#115e59;',
+            title: '漁人碼頭 Anchorage Square 取車 (Pick-up)',
+            sub: '500 Beach St - Ste 120, Fisherman\'s Wharf, SF',
+            desc: '於飯店正對面街口的 Anchorage Square Shopping Ctr 取車（電話：415-441-4141｜週一至週五營業時間 08:00–16:45）。\n取車後回 Hotel Riu Plaza 辦理退房並將所有行李直接鎖入後車廂（此車將於 10/13 21:00 異地歸還於 SFO 機場）。',
+            transport: '🚶 從 Riu Plaza 步行 2 分鐘即達',
+            address: '500 Beach St Ste 120, San Francisco, CA 94133',
+            phone: '415-441-4141'
+          },
+          {
+            time: '09:30',
+            icon: 'Car',
+            dotType: 'shop',
+            tag: '自駕前往 Outlet',
+            tagColor: 'background:#fce7f3;color:#9d174d;',
+            title: '驅車前往 Livermore Outlet 開門採購',
+            sub: 'San Francisco Premium Outlets (Livermore)',
+            desc: '開車前往位於 Livermore 的 San Francisco Premium Outlets。週一平日完全避開週末車潮與排隊人潮！\n⚠️ 車內絕對不留任何可視物品，所有戰利品購買後務必直接鎖入看不見的後車廂，中途切勿在露天停車場多次開關後車廂整理。',
+            transport: '🚗 開車約 45–55 分鐘',
+            address: 'San Francisco Premium Outlets, 2774 Livermore Outlets Dr, Livermore, CA'
+          },
+          {
+            time: '12:30',
+            icon: 'Utensils',
+            dotType: 'food',
+            tag: '無牛肉午餐',
+            tagColor: 'background:#ffedd5;color:#9a3412;',
+            title: 'Outlet 園區餐食 或 對面亞洲商場 Pacific Pearl',
+            sub: 'Pacific Pearl 亞洲綜合商場 (徒步 5–8 分鐘)',
+            desc: '可於 Outlet 園區內用餐，或從 Outlet 徒步約 5 至 8 分鐘（穿過西側停車場並過馬路），抵達對面的亞洲綜合商場 Pacific Pearl 享用多元亞洲美食。',
+            transport: '🚶 穿過西側停車場步行 5–8 分',
+            address: 'Pacific Pearl, 2622 Livermore Outlets Dr, Livermore, CA'
+          },
+          {
+            time: '14:00',
+            icon: 'ShoppingBag',
+            dotType: 'shop',
+            tag: '平日折上折血拼',
+            tagColor: 'background:#fce7f3;color:#9d174d;',
+            title: '享受 Outlet 平日折上折購物',
+            sub: 'Coach / Tory Burch / Polo / Lululemon / Arc\'teryx / Nike',
+            desc: '直奔店鋪深處「Clearance / Final Sale」紅標折上折區！結帳記得出示 Simon VIP Shopper Club 數位優惠券，刷卡務必選擇「USD 美元」避開 DCC 匯率陷阱（詳見下方 Outlet 攻略分頁）。',
+            transport: '🛍️ 園區步行採買',
+            address: 'San Francisco Premium Outlets, Livermore, CA'
+          },
+          {
+            time: '17:30',
+            icon: 'Moon',
+            dotType: 'hotel',
+            tag: '南灣入住',
+            tagColor: 'background:#e0e7ff;color:#3730a3;',
+            title: '傍晚開往南灣 Sunnyvale 入住 Maple Tree Inn',
+            sub: 'Maple Tree Inn, Sunnyvale',
+            desc: '從容購物後，傍晚驅車前往矽谷核心區 Sunnyvale 入住 Maple Tree Inn，將戰利品安全放回房間。',
+            transport: '🚗 開車約 40 分鐘',
+            address: 'Maple Tree Inn, 711 E El Camino Real, Sunnyvale, CA 94087'
+          },
+          {
+            time: '19:00',
+            icon: 'Utensils',
+            dotType: 'food',
+            tag: '無牛肉中東料理晚餐',
+            tagColor: 'background:#ffedd5;color:#9a3412;',
+            title: 'Dishdash Middle Eastern Cuisine',
+            sub: '必點：Mansaf 慢燉羊膝佐香料飯、炭烤香草雞肉串',
+            desc: '造訪 Sunnyvale Downtown 評價極高的中東地中海料理名店！必點「Mansaf 慢燉羊膝佐薑黃香料飯」或「炭烤香草雞肉串 (Shish Taouk)」，香料豐富濃郁，完全無牛肉。',
+            transport: '🚗 開車 8 分鐘至 Sunnyvale Downtown',
+            address: 'Dishdash Middle Eastern Cuisine, 190 S Murphy Ave, Sunnyvale, CA'
+          }
+        ]
+      },
+      {
+        id: 'day6',
+        dateLabel: 'Day 6',
+        dayLabel: '10/13 (二)',
+        title: '矽谷科技巨頭 ➔ 史丹佛大學 ➔ 21:00 SFO 還車',
+        subTitle: 'Google Campus, Stanford & 9:00 PM SFO Car Return',
+        themeClass: 'theme-indigo',
+        hotel: {
+          name: '21:00 SFO 機場還車 ➔ 搭乘 10/14 01:05 CI 3',
+          note: '還車地址：780 McDonnell Rd, San Francisco, CA (24h 營業)',
+          address: '780 McDonnell Rd, San Francisco, CA 94128 US'
+        },
+        activities: [
+          {
+            time: '09:30',
+            icon: 'Coffee',
+            dotType: 'coffee',
+            tag: '早午餐 & 獨立烘焙',
+            tagColor: 'background:#fef3c7;color:#92400e;',
+            title: 'Red Rock Coffee 獨立烘焙早午餐',
+            sub: 'Mountain View Castro Street 在地代表咖啡店',
+            desc: '早晨造訪 Mountain View 在地代表獨立咖啡店 Red Rock Coffee 享用早午餐與精品烘焙咖啡。',
+            transport: '🚗 開車約 10 分鐘',
+            address: 'Red Rock Coffee, 201 Castro St, Mountain View, CA'
+          },
+          {
+            time: '10:45',
+            icon: 'Camera',
+            dotType: 'default',
+            tag: '科技巨頭巡禮',
+            tagColor: 'background:#e0e7ff;color:#3730a3;',
+            title: 'Google Campus 訪客中心 (Visitor Experience)',
+            sub: '巨型 Android 甜點雕塑群 ＆ Google Store 旗艦店',
+            desc: '前往 Mountain View 造訪 Google Visitor Experience，打卡戶外可愛的巨型 Android 甜點雕塑群，並逛 Google 官方周邊商品旗艦店。',
+            transport: '🚗 開車約 10 分鐘',
+            address: 'Google Visitor Experience, 2000 N Shoreline Blvd, Mountain View, CA'
+          },
+          {
+            time: '14:00',
+            icon: 'Camera',
+            dotType: 'default',
+            tag: '百年名校巡禮',
+            tagColor: 'background:#e0e7ff;color:#3730a3;',
+            title: '史丹佛大學校園 (Stanford University)',
+            sub: 'Main Quad 砂岩長廊 · 紀念教堂 (Memorial Church) · 胡佛塔',
+            desc: '漫步西班牙傳教風格的黃色砂岩長廊（Main Quad），進入參觀金色拜占庭馬賽克壁畫的「紀念教堂 (Memorial Church)」，並可登上「胡佛塔 (Hoover Tower)」遠眺整個矽谷。',
+            transport: '🚗 開車約 20 分鐘',
+            address: 'Stanford University Main Quad, 450 Jane Stanford Way, Stanford, CA'
+          },
+          {
+            time: '16:30',
+            icon: 'Coffee',
+            dotType: 'coffee',
+            tag: '加州必喝下午茶',
+            tagColor: 'background:#fef3c7;color:#92400e;',
+            title: 'Philz Coffee 薄荷特調手沖 (Mint Mojito)',
+            sub: '新鮮薄荷葉搗碎的招牌手沖冰咖啡',
+            desc: '品嚐加州特有創始品牌 Philz Coffee 最具代表性的招牌「Mint Mojito Iced Coffee」（新鮮薄荷葉搗碎的綿密手沖特調）。',
+            transport: '🚗 返回 Mountain View / Sunnyvale',
+            address: 'Philz Coffee, 125 S Frances St, Sunnyvale, CA'
+          },
+          {
+            time: '18:00',
+            icon: 'Utensils',
+            dotType: 'food',
+            tag: '無牛肉告別晚餐',
+            tagColor: 'background:#ffedd5;color:#9a3412;',
+            title: 'Mountain View Castro 街散步 ＆ 日式拉麵/烏龍麵',
+            sub: 'Shalala 日式豬骨白湯拉麵 或 丸一黑豚烏龍麵 (Maru Ichi)',
+            desc: '在熱鬧的 Castro Street 散步，享用熱騰騰的告別晚餐：\n• Shalala：純豚骨白湯拉麵與日式炸雞塊\n• 丸一烏龍麵 (Maru Ichi)：黑豚烏龍麵 / 黑豚黑芝麻擔擔麵\n餐後返回飯店整理戰利品裝箱，約 20:15–20:30 出發沿 101 高速公路北上前往 SFO 還車。',
+            transport: '🚶 Castro Street 散步',
+            address: 'Shalala, 698 W Dana St, Mountain View, CA'
+          },
+          {
+            time: '21:00',
+            icon: 'Car',
+            dotType: 'car',
+            tag: '租車 #2 還車 (SFO)',
+            tagColor: 'background:#ccfbf1;color:#115e59;',
+            title: 'SFO 機場租車中心還車 (Drop-off)',
+            sub: '780 McDonnell Rd, San Francisco, CA 94128 (24h 營業)',
+            desc: '沿 US-101 N 北上（夜間完全不塞車，車程約 25–30 分鐘），於 21:00 抵達 SFO Rental Car Center 辦理還車（電話：650-877-6780）。還車後搭乘 AirTrain 至國際航廈辦理華航 CI 3 行李托運與安檢。',
+            transport: '🚗 沿 US-101 N 開往 SFO (約 25–30 分)',
+            address: '780 McDonnell Rd, San Francisco, CA 94128 US',
+            phone: '650-877-6780'
+          }
+        ]
+      },
+      {
+        id: 'day7',
+        dateLabel: 'Day 7',
+        dayLabel: '10/14 (三)',
+        title: '凌晨華航班機起飛 ➔ 返抵台灣',
+        subTitle: 'Return Flight CI 3 to Taipei (Arrives 10/15 AM)',
+        themeClass: 'theme-purple',
+        hotel: {
+          name: '機上商務艙平躺休息 ➔ 溫暖的家',
+          note: '預計 10/15 (四) 清晨 05:35 抵達桃園機場 T2',
+          address: '桃園國際機場第二航廈'
+        },
+        activities: [
+          {
+            time: '01:05',
+            icon: 'Plane',
+            dotType: 'flight',
+            tag: '回程航班 CI 3',
+            tagColor: 'background:#f3e8ff;color:#6b21a8;',
+            title: '中華航空 CI 3 起飛返台',
+            sub: 'SFO International Terminal · 商務艙 Seat 16D',
+            desc: '搭乘 10/14 (三) 凌晨 01:05 華航 CI 3 班機（Airbus A350-900 商務艙 16D），享用機上套餐並充分休息（飛行時間 13 小時 30 分）。託運行李額度：2 × 32kg (70lbs)。',
+            transport: '✈️ 直飛桃園機場 TPE',
+            address: 'San Francisco International Airport International Terminal'
+          },
+          {
+            time: '10/15 05:35',
+            icon: 'MapPin',
+            dotType: 'flight',
+            tag: '平安抵台',
+            tagColor: 'background:#d1fae5;color:#065f46;',
+            title: '清晨抵達桃園國際機場第二航廈 (TPE T2)',
+            sub: '10/15 (週四) 05:35 AM 抵達台灣',
+            desc: '滿載戰利品與美好回憶平安返抵台灣，旅途愉快！👋',
+            transport: '🏠 平安返家',
+            address: '桃園國際機場第二航廈'
+          }
+        ]
+      }
+    ];
+
+    // Default to Day 1 (10/8 Thu) so vacation itinerary opens immediately, while 10/4-8 Work tab is right next to it
+    let activeDayIndex = 1;
+    let activeMainTab = 'schedule';
+
+    function renderBottomNavIcons() {
+      document.getElementById('nav-icon-schedule').innerHTML = renderIcon('Calendar', 19);
+      document.getElementById('nav-icon-booking').innerHTML = renderIcon('Ticket', 19);
+      document.getElementById('nav-icon-outlet').innerHTML = renderIcon('ShoppingBag', 19);
+      document.getElementById('nav-icon-tips').innerHTML = renderIcon('Shield', 19);
+    }
+
+    function renderDayTabs() {
+      const bar = document.getElementById('day-tabs-bar');
+      if (activeMainTab !== 'schedule') {
+        bar.style.display = 'none';
+        return;
+      }
+      bar.style.display = 'flex';
+      bar.innerHTML = SCHEDULE.map((day, idx) => {
+        const isActive = idx === activeDayIndex;
+        return `
+          <button
+            onclick="selectDay(${idx})"
+            class="day-tab-btn ${isActive ? 'active' : ''}"
+            id="day-tab-${idx}"
+          >
+            <div style="font-size:11px;text-transform:uppercase;margin-bottom:2px;letter-spacing:0.02em;">${day.dateLabel}</div>
+            <div style="font-size:13px;">${day.dayLabel}</div>
+            ${isActive ? '<div class="day-tab-indicator"></div>' : ''}
+          </button>
+        `;
+      }).join('');
+    }
+
+    function selectDay(idx) {
+      activeDayIndex = idx;
+      renderDayTabs();
+      renderMainContent();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      const btn = document.getElementById(`day-tab-${idx}`);
+      if (btn && btn.scrollIntoView) {
+        btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }
+    }
+
+    function switchMainTab(tab) {
+      activeMainTab = tab;
+      ['schedule', 'booking', 'outlet', 'tips'].forEach(t => {
+        const btn = document.getElementById(`nav-${t}`);
+        if (btn) {
+          if (t === tab) btn.classList.add('active');
+          else btn.classList.remove('active');
+        }
+      });
+      renderDayTabs();
+      renderMainContent();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderScheduleView() {
+      const day = SCHEDULE[activeDayIndex];
+      const activitiesHtml = day.activities.map(item => {
+        const shortAddr = item.address && item.address.length > 22
+          ? item.address.substring(0, 22) + '...'
+          : item.address;
+        const safeAddr = (item.address || '').replace(/'/g, "\\'");
+        const safeCopyCode = (item.copyCode || '').replace(/'/g, "\\'");
+        const safeCopyLabel = (item.copyLabel || '').replace(/'/g, "\\'");
+
+        return `
+          <div class="timeline-item">
+            <div class="timeline-dot ${item.dotType || ''}"></div>
+            <div class="timeline-card">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                <div style="display:flex;align-items:center;gap:6px;color:#2563eb;font-weight:700;font-size:13px;flex-wrap:wrap;">
+                  ${renderIcon('Clock', 14)}
+                  <span>${item.time}</span>
+                  ${item.tag ? `<span class="badge-pill" style="${item.tagColor}">${item.tag}</span>` : ''}
+                </div>
+                <div style="color:#9ca3af;">
+                  ${renderIcon(item.icon, 18)}
+                </div>
+              </div>
+
+              <h3 style="font-weight:700;color:#1f2937;font-size:1.05rem;line-height:1.35;margin:0 0 4px 0;">
+                ${item.title}
+              </h3>
+              <p style="color:#6b7280;font-size:0.82rem;font-weight:600;margin:0 0 10px 0;">
+                ${item.sub}
+              </p>
+
+              <div style="background:#f9fafb;border-radius:8px;padding:10px 12px;margin-bottom:10px;border:1px solid #f3f4f6;">
+                <p style="color:#374151;font-size:0.84rem;line-height:1.55;margin:0;white-space:pre-line;">${item.desc}</p>
+              </div>
+
+              <div style="display:flex;flex-wrap:wrap;gap:6px;">
+                ${item.transport ? `
+                  <div class="chip-btn" style="background:#f3f4f6;color:#4b5563;cursor:default;">
+                    <span>${item.transport}</span>
+                  </div>
+                ` : ''}
+                ${item.address ? `
+                  <button
+                    onclick="openMap('${safeAddr}')"
+                    class="chip-btn"
+                    style="background:#eff6ff;color:#2563eb;border:1px solid #dbeafe;font-weight:600;"
+                  >
+                    ${renderIcon('MapPin', 12, 'margin-right:4px;')}
+                    <span>${shortAddr}</span>
+                    ${renderIcon('ExternalLink', 10, 'margin-left:4px;')}
+                  </button>
+                ` : ''}
+                ${item.phone ? `
+                  <a
+                    href="tel:${item.phone}"
+                    class="chip-btn"
+                    style="background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0;font-weight:600;"
+                  >
+                    <span>📞 ${item.phone}</span>
+                  </a>
+                ` : ''}
+                ${item.externalUrl ? `
+                  <a
+                    href="${item.externalUrl}"
+                    target="_blank"
+                    rel="noopener"
+                    class="chip-btn"
+                    style="background:#fff1f2;color:#be123c;border:1px solid #fecdd3;font-weight:700;"
+                  >
+                    <span>🏠 ${item.externalLabel || '查看連結'}</span>
+                    ${renderIcon('ExternalLink', 10, 'margin-left:4px;')}
+                  </a>
+                ` : ''}
+                ${item.copyCode ? `
+                  <button
+                    onclick="copyText('${safeCopyCode}', '${safeCopyLabel}')"
+                    class="chip-btn"
+                    style="background:#fef3c7;color:#92400e;border:1px solid #fde68a;font-weight:700;"
+                  >
+                    <span>📋 複製代號: ${item.copyCode}</span>
+                  </button>
+                ` : ''}
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      const safeHotelAddr = (day.hotel.address || '').replace(/'/g, "\\'");
+
+      return `
+        <!-- Day Theme Banner -->
+        <div class="${day.themeClass}" style="border-radius:14px;padding:16px;margin-bottom:20px;box-shadow:0 1px 2px rgba(0,0,0,0.04);">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+            <span style="font-size:12px;font-weight:700;opacity:0.85;text-transform:uppercase;letter-spacing:0.04em;">
+              ${day.dateLabel} · ${day.dayLabel}
+            </span>
+            <span style="font-size:11px;font-weight:600;background:rgba(255,255,255,0.65);padding:2px 8px;border-radius:999px;">
+              🏨 ${day.hotel.name.split(' ')[0]} ${day.hotel.name.split(' ')[1] || ''}
+            </span>
+          </div>
+          <h2 style="font-size:1.18rem;font-weight:800;margin:0 0 3px 0;line-height:1.3;">${day.title}</h2>
+          <p style="font-size:0.8rem;font-weight:600;opacity:0.85;margin:0;">(${day.subTitle})</p>
+        </div>
+
+        <!-- Timeline -->
+        <div class="timeline-container">
+          <div class="timeline-line"></div>
+          ${activitiesHtml}
+        </div>
+
+        <!-- Nightly Hotel Footer Card -->
+        <div style="background:#ffffff;border:1px solid #e0e7ff;border-radius:14px;padding:14px 16px;margin-top:8px;box-shadow:0 1px 3px rgba(0,0,0,0.03);">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
+            <div>
+              <div style="font-size:11px;font-weight:700;color:#4f46e5;text-transform:uppercase;margin-bottom:2px;">
+                🌙 當晚住宿 (Night Stay)
+              </div>
+              <div style="font-weight:700;color:#1f2937;font-size:0.95rem;">${day.hotel.name}</div>
+              <div style="font-size:0.78rem;color:#6b7280;margin-top:2px;">${day.hotel.note}</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
+              <button
+                onclick="openMap('${safeHotelAddr}')"
+                style="background:#eef2ff;color:#4338ca;border:1px solid #c7d2fe;border-radius:8px;padding:6px 10px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:4px;"
+              >
+                ${renderIcon('MapPin', 13)} 導航
+              </button>
+              ${day.hotel.externalUrl ? `
+                <a
+                  href="${day.hotel.externalUrl}"
+                  target="_blank"
+                  rel="noopener"
+                  style="background:#fff1f2;color:#be123c;border:1px solid #fecdd3;border-radius:8px;padding:5px 9px;font-size:11px;font-weight:700;text-decoration:none;white-space:nowrap;"
+                >
+                  ${day.hotel.externalLabel || '開啟房源'}
+                </a>
+              ` : ''}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderBookingView() {
+      return `
+        <div style="margin-bottom:16px;">
+          <div class="theme-blue" style="border-radius:14px;padding:16px;margin-bottom:16px;">
+            <h2 style="font-size:1.2rem;font-weight:800;margin:0 0 4px 0;">✈️ 機票 · 🚗 兩段租車 · 🏨 住宿總覽</h2>
+            <p style="font-size:0.82rem;margin:0;opacity:0.9;">點擊地址開啟 Google Maps · 點擊電話直接撥號</p>
+          </div>
+
+          <!-- Outbound Flight Card -->
+          <div style="background:#ffffff;border-radius:14px;padding:16px;margin-bottom:14px;border:1px solid #e5e7eb;box-shadow:0 1px 3px rgba(0,0,0,0.03);">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+              <span style="background:#e0f2fe;color:#0369a1;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;">
+                去程 · 2026/10/04 (日)
+              </span>
+              <span style="font-size:12px;font-weight:700;color:#374151;">CHINA AIRLINES · CI 4</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin:12px 0;">
+              <div>
+                <div style="font-size:1.5rem;font-weight:800;color:#111827;">TPE</div>
+                <div style="font-size:12px;color:#6b7280;font-weight:600;">桃園 T2 · 23:30</div>
+              </div>
+              <div style="text-align:center;flex:1;padding:0 12px;">
+                <div style="font-size:11px;color:#6b7280;">11h 25m · A359</div>
+                <div style="height:2px;background:#cbd5e1;margin:6px 0;position:relative;"></div>
+                <div style="font-size:11px;color:#2563eb;font-weight:700;">座位 Seat 14G (商務艙)</div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:1.5rem;font-weight:800;color:#111827;">SFO</div>
+                <div style="font-size:12px;color:#6b7280;font-weight:600;">國際航廈 · 19:55</div>
+              </div>
+            </div>
+            <div style="font-size:12px;color:#4b5563;background:#f9fafb;padding:8px 10px;border-radius:8px;">
+              🧳 託運行李：2 × 32kg (70lbs) ｜ 手提行李：2 × 7kg (15lbs)
+            </div>
+          </div>
+
+          <!-- Return Flight Card -->
+          <div style="background:#ffffff;border-radius:14px;padding:16px;margin-bottom:14px;border:1px solid #e5e7eb;box-shadow:0 1px 3px rgba(0,0,0,0.03);">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+              <span style="background:#f3e8ff;color:#6b21a8;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;">
+                回程 · 2026/10/14 (三) 凌晨
+              </span>
+              <span style="font-size:12px;font-weight:700;color:#374151;">CHINA AIRLINES · CI 3</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin:12px 0;">
+              <div>
+                <div style="font-size:1.5rem;font-weight:800;color:#111827;">SFO</div>
+                <div style="font-size:12px;color:#6b7280;font-weight:600;">國際航廈 · 01:05</div>
+              </div>
+              <div style="text-align:center;flex:1;padding:0 12px;">
+                <div style="font-size:11px;color:#6b7280;">13h 30m · A359</div>
+                <div style="height:2px;background:#cbd5e1;margin:6px 0;position:relative;"></div>
+                <div style="font-size:11px;color:#7e22ce;font-weight:700;">座位 Seat 16D (商務艙)</div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:1.5rem;font-weight:800;color:#111827;">TPE</div>
+                <div style="font-size:12px;color:#6b7280;font-weight:600;">10/15 (四) 05:35</div>
+              </div>
+            </div>
+            <div style="font-size:12px;color:#4b5563;background:#f9fafb;padding:8px 10px;border-radius:8px;">
+              🧳 託運行李：2 × 32kg (70lbs) ｜ 10/13 (二) 21:00 於 SFO 辦理還車
+            </div>
+          </div>
+
+          <!-- Two Car Rentals Section -->
+          <div style="background:#ffffff;border-radius:14px;padding:16px;margin-bottom:14px;border:1px solid #99f6e4;box-shadow:0 1px 3px rgba(0,0,0,0.03);">
+            <h3 style="font-size:0.98rem;font-weight:800;color:#0f766e;margin:0 0 12px 0;display:flex;align-items:center;gap:6px;">
+              🚗 兩段租車資訊 (Car Rentals)
+            </h3>
+
+            <!-- Rental 1: 10/4 - 10/8 -->
+            <div style="background:#f0fdfa;border:1px solid #ccfbf1;border-radius:10px;padding:12px;margin-bottom:10px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                <span style="background:#0d9488;color:#ffffff;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;">
+                  第 1 段 (出差日)：10/04 – 10/08
+                </span>
+                <span style="font-size:11px;font-weight:700;color:#0f766e;">SFO 同站取還</span>
+              </div>
+              <div style="font-size:0.83rem;color:#1f2937;line-height:1.55;margin-bottom:8px;">
+                • <strong>Pick-up 取車</strong>：<strong>10/04 (日) 20:30 (8:30 PM)</strong><br/>
+                • <strong>Return 還車</strong>：<strong>10/08 (四) 20:30 (8:30 PM)</strong><br/>
+                • <strong>地點</strong>：San Francisco Intl Apo (780 McDonnell Rd, San Francisco, CA 94128)
+              </div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                <button onclick="openMap('780 McDonnell Rd, San Francisco, CA 94128 US')" class="chip-btn" style="background:#ffffff;color:#0f766e;border:1px solid #99f6e4;font-weight:700;">
+                  📍 導航 SFO 租車中心 (780 McDonnell Rd)
+                </button>
+                <a href="tel:650-877-6780" class="chip-btn" style="background:#ffffff;color:#15803d;border:1px solid #bbf7d0;font-weight:600;">
+                  📞 650-877-6780
+                </a>
+              </div>
+            </div>
+
+            <!-- Rental 2: 10/12 - 10/13 -->
+            <div style="background:#f0fdfa;border:1px solid #ccfbf1;border-radius:10px;padding:12px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                <span style="background:#0d9488;color:#ffffff;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;">
+                  第 2 段 (Outlet & 矽谷)：10/12 – 10/13
+                </span>
+                <span style="font-size:11px;font-weight:700;color:#0f766e;">漁人碼頭取 ➔ SFO 還</span>
+              </div>
+              <div style="font-size:0.83rem;color:#1f2937;line-height:1.55;margin-bottom:8px;">
+                • <strong>Pick-up 取車</strong>：<strong>10/12 (一) 09:00 AM</strong><br/>
+                &nbsp;&nbsp;📍 <strong>Anchorage Square Shopping Ctr (FMW)</strong><br/>
+                &nbsp;&nbsp;500 Beach St - Ste 120, Fisherman's Wharf, SF, CA 94133<br/>
+                &nbsp;&nbsp;<span style="font-size:11px;color:#4b5563;">🕒 營業時間：Mon–Fri 8:00 AM–4:45 PM (Sat/Sun 8:00–11:45 AM)</span><br/>
+                • <strong>Drop-off 還車</strong>：<strong>10/13 (二) 21:00 (9:00 PM)</strong><br/>
+                &nbsp;&nbsp;📍 <strong>San Francisco Intl Airport (SFO)</strong><br/>
+                &nbsp;&nbsp;780 McDonnell Rd, San Francisco, CA 94128 (24 hrs)
+              </div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                <button onclick="openMap('500 Beach St Ste 120, Fisherman\\'s Wharf, San Francisco, CA 94133')" class="chip-btn" style="background:#ffffff;color:#0f766e;border:1px solid #99f6e4;font-weight:700;">
+                  📍 導航漁人碼頭取車點 (500 Beach St)
+                </button>
+                <a href="tel:415-441-4141" class="chip-btn" style="background:#ffffff;color:#15803d;border:1px solid #bbf7d0;font-weight:600;">
+                  📞 415-441-4141 (FMW)
+                </a>
+                <button onclick="openMap('780 McDonnell Rd, San Francisco, CA 94128 US')" class="chip-btn" style="background:#ffffff;color:#2563eb;border:1px solid #bfdbfe;font-weight:600;">
+                  📍 導航 SFO 還車點
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Day Tour Voucher Card -->
+          <div style="background:#ffffff;border-radius:14px;padding:16px;margin-bottom:14px;border:1px solid #fde68a;box-shadow:0 1px 3px rgba(0,0,0,0.03);">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <span style="background:#fef3c7;color:#92400e;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;">
+                🚌 一日遊集合資訊 · 10/9 (五) & 10/11 (日)
+              </span>
+            </div>
+            <div style="font-weight:800;font-size:0.98rem;color:#1f2937;margin-bottom:4px;">
+              Easy Travel：舊金山市區經典地標巡禮 & 惡魔島
+            </div>
+            <div style="font-size:0.82rem;color:#4b5563;line-height:1.5;margin-bottom:8px;">
+              • 集合時間：<strong>10/9 (五) 08:50 AM</strong><br/>
+              • 集合地點：<strong>2805 Leavenworth Street, SF</strong> (Fisherman's Wharf Area，從 Hotel Caza 步行 5–8 分鐘)<br/>
+              • 10/11 (日) 清晨 07:00：優聖美地一日遊於飯店集合出發
+            </div>
+            <button onclick="openMap('2805 Leavenworth Street, San Francisco, CA')" class="chip-btn" style="background:#eff6ff;color:#2563eb;border:1px solid #dbeafe;font-weight:600;">
+              ${renderIcon('MapPin', 12, 'margin-right:4px;')} 導航至 2805 Leavenworth St 集合點
+            </button>
+          </div>
+
+          <!-- All Accommodations Summary Card -->
+          <div style="background:#ffffff;border-radius:14px;padding:16px;border:1px solid #e5e7eb;">
+            <h3 style="font-size:0.98rem;font-weight:800;color:#111827;margin:0 0 12px 0;">🏨 全程住宿總覽 (10/4 – 10/13)</h3>
+
+            <!-- Stay 1: Airbnb -->
+            <div style="padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid #f1f5f9;">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:11px;font-weight:700;color:#be123c;">10/4 (日) – 10/8 (四) · 4 晚 (出差日)</span>
+                <div style="display:flex;gap:5px;">
+                  <a href="${AIRBNB_URL}" target="_blank" rel="noopener" class="chip-btn" style="background:#fff1f2;color:#be123c;border:1px solid #fecdd3;font-weight:700;">
+                    🏠 Airbnb 頁面
+                  </a>
+                  <button onclick="openMap('Castro St, Mountain View, CA')" class="chip-btn" style="background:#eff6ff;color:#2563eb;border:1px solid #dbeafe;font-weight:600;">
+                    📍 地圖
+                  </button>
+                </div>
+              </div>
+              <div style="font-weight:700;color:#1f2937;font-size:0.95rem;margin-top:2px;">Airbnb — Porta Azul House (山景城平房)</div>
+              <div style="font-size:12px;color:#6b7280;">Mountain View, CA（靠近市中心用餐目的地 · 2 房 3 床 2 衛 · ★4.98）</div>
+            </div>
+
+            <!-- Stay 2: Hotel Caza -->
+            <div style="padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid #f1f5f9;">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:11px;font-weight:700;color:#2563eb;">10/8 (四) – 10/10 (六) · 2 晚</span>
+                <button onclick="openMap('Hotel Caza Fisherman\\'s Wharf, 1300 Columbus Ave, San Francisco, CA')" class="chip-btn" style="background:#eff6ff;color:#2563eb;border:1px solid #dbeafe;font-weight:600;">
+                  📍 地圖
+                </button>
+              </div>
+              <div style="font-weight:700;color:#1f2937;font-size:0.95rem;margin-top:2px;">Hotel Caza Fisherman's Wharf</div>
+              <div style="font-size:12px;color:#6b7280;">1300 Columbus Ave, San Francisco, CA 94133</div>
+            </div>
+
+            <!-- Stay 3: Hotel Riu Plaza -->
+            <div style="padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid #f1f5f9;">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:11px;font-weight:700;color:#d97706;">10/10 (六) – 10/12 (一) · 2 晚</span>
+                <button onclick="openMap('Hotel Riu Plaza Fisherman\\'s Wharf, 2500 Mason St, San Francisco, CA')" class="chip-btn" style="background:#eff6ff;color:#2563eb;border:1px solid #dbeafe;font-weight:600;">
+                  📍 地圖
+                </button>
+              </div>
+              <div style="font-weight:700;color:#1f2937;font-size:0.95rem;margin-top:2px;">Hotel Riu Plaza Fisherman's Wharf</div>
+              <div style="font-size:12px;color:#6b7280;">2500 Mason St, San Francisco, CA 94133（從 Caza 過街步行 3 分鐘；對面 500 Beach St 即 10/12 取車點）</div>
+            </div>
+
+            <!-- Stay 4: Maple Tree Inn -->
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:11px;font-weight:700;color:#db2777;">10/12 (一) – 10/13 (二) · 1 晚</span>
+                <button onclick="openMap('Maple Tree Inn, 711 E El Camino Real, Sunnyvale, CA')" class="chip-btn" style="background:#eff6ff;color:#2563eb;border:1px solid #dbeafe;font-weight:600;">
+                  📍 地圖
+                </button>
+              </div>
+              <div style="font-weight:700;color:#1f2937;font-size:0.95rem;margin-top:2px;">Maple Tree Inn (Sunnyvale)</div>
+              <div style="font-size:12px;color:#6b7280;">711 E El Camino Real, Sunnyvale, CA 94087</div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderOutletView() {
+      return `
+        <div>
+          <div class="theme-pink" style="border-radius:14px;padding:16px;margin-bottom:16px;">
+            <h2 style="font-size:1.2rem;font-weight:800;margin:0 0 4px 0;">🛍️ Livermore Outlet 血拼關鍵秘訣</h2>
+            <p style="font-size:0.82rem;margin:0;opacity:0.9;">San Francisco Premium Outlets · 10/12 (週一) 平日折上折</p>
+          </div>
+
+          <!-- Strategy 1 -->
+          <div style="background:#ffffff;border-radius:14px;padding:15px;margin-bottom:12px;border:1px solid #e5e7eb;">
+            <div style="font-weight:800;color:#be185d;font-size:0.95rem;margin-bottom:6px;">
+              1️⃣ 行前註冊 VIP 數位優惠券 (額外 85–9 折)
+            </div>
+            <p style="font-size:0.84rem;color:#374151;line-height:1.55;margin:0 0 10px 0;">
+              出發前至 Simon 官網註冊免費的 <strong>「VIP Shopper Club」</strong>，於各品牌（如 Coach、Tory Burch、Polo）結帳時出示手機條碼，滿額經常能再額外折抵 <strong>10%–15%</strong>！
+            </p>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <a href="https://www.premiumoutlets.com/vip" target="_blank" rel="noopener" class="chip-btn" style="background:#fdf2f8;color:#be185d;border:1px solid #fbcfe8;font-weight:700;">
+                🔗 開啟 Simon VIP Shopper Club ${renderIcon('ExternalLink', 11, 'margin-left:4px;')}
+              </a>
+              <button onclick="openMap('San Francisco Premium Outlets, 2774 Livermore Outlets Dr, Livermore, CA')" class="chip-btn" style="background:#eff6ff;color:#2563eb;border:1px solid #dbeafe;font-weight:600;">
+                📍 導航至 Livermore Outlet
+              </button>
+            </div>
+          </div>
+
+          <!-- Strategy 2 -->
+          <div style="background:#ffffff;border-radius:14px;padding:15px;margin-bottom:12px;border:1px solid #e5e7eb;">
+            <div style="font-weight:800;color:#be185d;font-size:0.95rem;margin-bottom:6px;">
+              2️⃣ 直奔店鋪深處「Clearance / Final Sale」專區
+            </div>
+            <p style="font-size:0.84rem;color:#374151;line-height:1.55;margin:0;">
+              進店不要在門口擺設的新品停留太久！直接走到底部出清貨架，標籤常有 <strong>「紅標折上折 (Take Additional 40%–50% off)」</strong>。
+            </p>
+          </div>
+
+          <!-- Strategy 3: Brands -->
+          <div style="background:#ffffff;border-radius:14px;padding:15px;margin-bottom:12px;border:1px solid #e5e7eb;">
+            <div style="font-weight:800;color:#be185d;font-size:0.95rem;margin-bottom:10px;">
+              3️⃣ 在美國買比台灣便宜很多的品牌清單
+            </div>
+
+            <div style="background:#fdf2f8;border-radius:10px;padding:10px 12px;margin-bottom:8px;">
+              <div style="font-weight:700;font-size:0.86rem;color:#9d174d;margin-bottom:3px;">
+                👜 美式輕奢皮件（約台灣 3–4 折）
+              </div>
+              <div style="font-size:0.82rem;color:#374151;line-height:1.5;">
+                <strong>Coach、Tory Burch、Kate Spade、Michael Kors</strong>：長夾與小包常下殺至幾十美元即可入手。
+              </div>
+            </div>
+
+            <div style="background:#eff6ff;border-radius:10px;padding:10px 12px;margin-bottom:8px;">
+              <div style="font-weight:700;font-size:0.86rem;color:#1e40af;margin-bottom:3px;">
+                👕 經典美式休閒（約台灣 3–5 折）
+              </div>
+              <div style="font-size:0.82rem;color:#374151;line-height:1.5;">
+                <strong>Polo Ralph Lauren</strong>（經典小馬刺繡短袖與襯衫）、<strong>Tommy Hilfiger</strong>、<strong>Calvin Klein</strong>（內著禮盒特惠）、<strong>Levi's</strong> 牛仔褲。
+              </div>
+            </div>
+
+            <div style="background:#ecfdf5;border-radius:10px;padding:10px 12px;">
+              <div style="font-weight:700;font-size:0.86rem;color:#065f46;margin-bottom:3px;">
+                🏃 運動機能名品（約台灣 5–6 折）
+              </div>
+              <div style="font-size:0.82rem;color:#374151;line-height:1.5;">
+                <strong>Lululemon</strong>（尋找 <em>We Made Too Much</em> 折扣架）、<strong>Arc'teryx 始祖鳥</strong>（暢貨門市）、<strong>Nike Factory Store</strong>（後方鞋牆 <em>Hash Wall</em> 的折上折鞋款）。
+              </div>
+            </div>
+          </div>
+
+          <!-- Strategy 4: DCC Trap -->
+          <div style="background:#fffbeb;border-radius:14px;padding:15px;border:1px solid #fde68a;">
+            <div style="font-weight:800;color:#92400e;font-size:0.95rem;margin-bottom:6px;">
+              4️⃣ 💳 刷卡避開 DCC 動態貨幣轉換陷阱！
+            </div>
+            <p style="font-size:0.84rem;color:#78350f;line-height:1.55;margin:0;">
+              刷卡機台跳出幣別選擇時，<strong>務必勾選「USD（美元）」</strong>，切勿選 TWD（新台幣），否則會被多收 <strong>3%–5%</strong> 的高額動態貨幣轉換手續費！
+            </p>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderTipsView() {
+      return `
+        <div>
+          <div style="background:#fee2e2;color:#991b1b;border-radius:14px;padding:16px;margin-bottom:16px;">
+            <h2 style="font-size:1.2rem;font-weight:800;margin:0 0 4px 0;">⚠️ 行前安全、穿搭 ＆ 無牛肉飲食指南</h2>
+            <p style="font-size:0.82rem;margin:0;opacity:0.9;">舊金山防破窗鐵則 · 十月洋蔥式穿搭 · 緊急聯絡電話</p>
+          </div>
+
+          <!-- Car Anti-Theft Rule -->
+          <div style="background:#ffffff;border-radius:14px;padding:16px;margin-bottom:14px;border:2px solid #fca5a5;">
+            <div style="font-weight:800;color:#dc2626;font-size:0.98rem;margin-bottom:8px;">
+              🚗 1. 車輛防盜核心原則（敲黑板！）
+            </div>
+            <ul style="margin:0;padding-left:18px;font-size:0.84rem;color:#374151;line-height:1.6;">
+              <li style="margin-bottom:6px;">
+                <strong>車內絕對不留任何可視物品</strong>：舊金山市區與灣區防範破窗盜竊第一準則，包含<strong>一件外套、空寶特瓶、充電線或購物紙袋</strong>都不可留在座位或腳踏墊上。
+              </li>
+              <li>
+                <strong>前四天免停車風險 ＆ 週一 Outlet 鎖入後車廂</strong>：10/8 晚間於 SFO 還車後，前四天住舊金山市區都是跟團或搭車，完美避開市區開車風險；10/12 (一) 09:00 於漁人碼頭 500 Beach St 取車開往 Outlet 採購時，所有行李與戰利品務必<strong>直接鎖入看不見的後車廂，中途切勿在露天停車場多次開關後車廂整理物品</strong>。
+              </li>
+            </ul>
+          </div>
+
+          <!-- Weather & Layering -->
+          <div style="background:#ffffff;border-radius:14px;padding:16px;margin-bottom:14px;border:1px solid #e5e7eb;">
+            <div style="font-weight:800;color:#1e40af;font-size:0.98rem;margin-bottom:8px;">
+              🧥 2. 十月舊金山與優聖美地穿搭指南
+            </div>
+            <p style="font-size:0.84rem;color:#374151;line-height:1.6;margin:0;">
+              舊金山海風強勁，惡魔島、金門大橋與渡輪大廈臨海早晚偏涼；優聖美地山區清晨與黃昏溫差很大。請準備 <strong>「防風防潑水保暖外套 ＋ 衛衣/長袖」的洋蔥式多層次穿法</strong>。
+            </p>
+          </div>
+
+          <!-- No-Beef Dining Cheat Sheet -->
+          <div style="background:#ffffff;border-radius:14px;padding:16px;margin-bottom:14px;border:1px solid #fed7aa;">
+            <div style="font-weight:800;color:#9a3412;font-size:0.98rem;margin-bottom:8px;">
+              🚫🥩 3. 無牛肉飲食速查卡 (No-Beef Guide)
+            </div>
+            <div style="font-size:0.83rem;color:#374151;line-height:1.6;margin-bottom:10px;">
+              • <strong>10/8 宵夜</strong>：純海鮮 (Seafood / Shrimp / Calamari) 或 瑪格麗特披薩 (Margherita Pizza)<br/>
+              • <strong>10/9 午/晚</strong>：Boudin 酸麵包蛤蜊濃湯 (純海鮮蔬菜熬煮，無牛骨高湯)、Fog Harbor 蒜香烤珍寶蟹、Mad Yolks 脆皮炸雞滑蛋堡<br/>
+              • <strong>10/10 早/午</strong>：Roli Roti 慢烤脆皮豬肉三明治 (Porchetta)、Primavera 雞肉玉米脆餅、Hog Island 生蠔拼盤<br/>
+              • <strong>10/11 午/晚</strong>：超市冷燻鮭魚/雞肉三明治野餐、Scoma's 純番茄海鮮高湯 <em>Lazy Man's Cioppino</em> (無牛骨成分)<br/>
+              • <strong>10/12 晚餐</strong>：Dishdash <em>Mansaf</em> 慢燉羊膝佐薑黃香料飯、<em>Shish Taouk</em> 炭烤香草雞肉串<br/>
+              • <strong>10/13 晚餐</strong>：Shalala 日式純豚骨白湯拉麵＋炸雞塊 / 丸一黑豚烏龍麵
+            </div>
+            <div style="background:#fff7ed;border-radius:8px;padding:8px 10px;font-size:12px;color:#9a3412;font-weight:600;">
+              💬 點餐確認金句：<em>"Excuse me, does this dish or broth contain any beef or beef stock?"</em>
+            </div>
+          </div>
+
+          <!-- Emergency Contacts -->
+          <div style="background:#ffffff;border-radius:14px;padding:16px;border:1px solid #e5e7eb;">
+            <div style="font-weight:800;color:#111827;font-size:0.98rem;margin-bottom:10px;">
+              🆘 4. Google GSOC · 租車據點 · 差旅緊急聯絡
+            </div>
+            <div style="display:grid;grid-template-columns:1fr;gap:8px;font-size:0.83rem;">
+              <a href="tel:650-253-5555" style="display:flex;justify-content:space-between;align-items:center;background:#fef2f2;color:#991b1b;padding:10px 12px;border-radius:10px;text-decoration:none;font-weight:700;border:1px solid #fecaca;">
+                <span>🚨 Google GSOC 緊急專線</span>
+                <span>📞 650-253-5555</span>
+              </a>
+              <a href="tel:650-253-5353" style="display:flex;justify-content:space-between;align-items:center;background:#f8fafc;color:#1e293b;padding:10px 12px;border-radius:10px;text-decoration:none;font-weight:600;border:1px solid #e2e8f0;">
+                <span>🛡️ GSOC 非緊急專線 (轉 2)</span>
+                <span>📞 650-253-5353 x2</span>
+              </a>
+              <a href="tel:650-877-6780" style="display:flex;justify-content:space-between;align-items:center;background:#f0fdfa;color:#0f766e;padding:10px 12px;border-radius:10px;text-decoration:none;font-weight:600;border:1px solid #99f6e4;">
+                <span>🚗 SFO 機場租車中心 (780 McDonnell)</span>
+                <span>📞 650-877-6780</span>
+              </a>
+              <a href="tel:415-441-4141" style="display:flex;justify-content:space-between;align-items:center;background:#f0fdfa;color:#0f766e;padding:10px 12px;border-radius:10px;text-decoration:none;font-weight:600;border:1px solid #99f6e4;">
+                <span>🚗 漁人碼頭租車點 (500 Beach St)</span>
+                <span>📞 415-441-4141</span>
+              </a>
+              <div style="font-size:11px;color:#6b7280;padding-top:4px;">
+                GSOC Email: <code>gsoc@google.com</code> · 內部短網址: <code>go/gsocapp</code> / <code>go/gsocchat</code>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderMainContent() {
+      const container = document.getElementById('main-content');
+      if (activeMainTab === 'schedule') {
+        container.innerHTML = renderScheduleView();
+      } else if (activeMainTab === 'booking') {
+        container.innerHTML = renderBookingView();
+      } else if (activeMainTab === 'outlet') {
+        container.innerHTML = renderOutletView();
+      } else if (activeMainTab === 'tips') {
+        container.innerHTML = renderTipsView();
+      }
+    }
+
+    // Initialize App
+    renderBottomNavIcons();
+    renderDayTabs();
+    renderMainContent();
+  </script>
+</body>
+</html>
